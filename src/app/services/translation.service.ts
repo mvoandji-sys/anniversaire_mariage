@@ -27,7 +27,7 @@ export class TranslationService {
       },
       home: {
         welcome: 'Bienvenue',
-        subtitle: 'Célébrons 5 années d\'amour et de bonheur',
+        subtitle: 'Célébrons 5 années d\'amour et de bonheur entre une princesse Bulu et un Prince Vuté',
         marriedFor: 'Mariés depuis',
         days: 'jours',
         quote: '"L\'amour ne consiste pas à se regarder l\'un l\'autre, mais à regarder ensemble dans la même direction."',
@@ -43,15 +43,15 @@ export class TranslationService {
         location: 'Lieu',
         dressCode: 'Code Vestimentaire',
         program: 'Programme de la journée',
-        november: '01 Novembre 2025',
-        residence: 'Résidence familiale à Nyom',
+        november: '08 Novembre 2025',
+        residence: 'Résidence familiale à Nyom, derrière école publique',
         dress: 'Chic et traditionnel',
         schedule: {
           welcome: 'Accueil des invités',
           worship: 'Culte d\'action de grâce',
-          testimonies: 'Témoignages',
+          testimonies: 'Spectacle Nuptial',
           dinner: 'Dîner',
-          dance: 'Danse et célébration'
+          dance: 'Danse et célébration diverses'
         }
       },
       gallery: {
@@ -83,7 +83,7 @@ export class TranslationService {
       faith: {
         title: 'Notre Foi',
         subtitle: 'Les valeurs qui guident notre union',
-        content: 'Notre mariage est fondé sur des valeurs spirituelles profondes. La foi, l\'espoir et l\'amour sont les piliers de notre union. Ensemble, nous marchons dans la lumière divine et construisons notre foyer sur des bases solides.'
+        content: 'Notre mariage est fondé sur des valeurs spirituelles profondes. La foi en Dieu, le respect, la tolérance et l\'amour sont les piliers de notre union. Ensemble, nous marchons dans la lumière divine et construisons notre foyer sur des bases solides.'
       }
     },
     en: {
@@ -98,7 +98,7 @@ export class TranslationService {
       },
       home: {
         welcome: 'Welcome',
-        subtitle: 'Celebrating 5 years of love and happiness',
+        subtitle: 'Let\'s celebrate 5 years of love and happiness between a Bulu princess and a Vuté prince.',
         marriedFor: 'Married for',
         days: 'days',
         quote: '"Love does not consist of gazing at each other, but in looking outward together in the same direction."',
@@ -114,13 +114,13 @@ export class TranslationService {
         location: 'Location',
         dressCode: 'Dress Code',
         program: 'Daily Program',
-        november: 'November 01, 2025',
+        november: 'November 08, 2025',
         residence: 'Family residence in Nyom',
         dress: 'Chic and traditional',
         schedule: {
           welcome: 'Guests welcome',
           worship: 'Thanksgiving service',
-          testimonies: 'Testimonies',
+          testimonies: 'Wedding Show',
           dinner: 'Dinner',
           dance: 'Dance and celebration'
         }
@@ -154,7 +154,7 @@ export class TranslationService {
       faith: {
         title: 'Our Faith',
         subtitle: 'The values that guide our union',
-        content: 'Our marriage is founded on deep spiritual values. Faith, hope and love are the pillars of our union. Together, we walk in divine light and build our home on solid foundations.'
+        content: 'Our marriage is founded on deep spiritual values. Faith in God, respect, tolerance, and love are the pillars of our union. Together, we walk in divine light and build our home on a solid foundation.'
       }
     }
   };

@@ -14,27 +14,27 @@ export class GalleryComponent {
 
   galleryPhotos = [
     {
-      url: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/jourmariage.jpg',
       caption: 'Notre jour de mariage - 2020'
     },
     {
-      url: 'https://images.pexels.com/photos/1024994/pexels-photo-1024994.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/PremiersMoments.jpeg',
       caption: 'Premiers moments ensemble'
     },
     {
-      url: 'https://images.pexels.com/photos/1024995/pexels-photo-1024995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/VoyageNoces.jpeg',
       caption: 'Voyage de noces'
     },
     {
-      url: 'https://images.pexels.com/photos/1024996/pexels-photo-1024996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/CelebrationFamille.jpeg',
       caption: 'Célébration en famille'
     },
     {
-      url: 'https://images.pexels.com/photos/1024997/pexels-photo-1024997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/MomentsTendresse.jpg',
       caption: 'Moments de tendresse'
     },
     {
-      url: 'https://images.pexels.com/photos/1024998/pexels-photo-1024998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      url: 'assets/images/AnniverSairePRece.jpeg',
       caption: 'Anniversaires précédents'
     }
   ];

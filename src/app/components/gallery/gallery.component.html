@@ -12,12 +12,14 @@
 
         <!-- Gallery Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div *ngFor="let photo of galleryPhotos; let i = index" 
-               class="group relative overflow-hidden rounded-2xl hover-lift cursor-pointer"
-               (click)="openLightbox(i)">
-            <img [src]="photo.url" 
-                 [alt]="photo.caption" 
-                 class="w-full h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div *ngFor="let photo of galleryPhotos; let i = index"
+              class="group relative overflow-hidden rounded-2xl hover-lift cursor-pointer"
+              (click)="openLightbox(i)">
+            
+            <!-- Utilisation de [src] et [alt] -->
+            <img [src]="photo.url"
+                [alt]="photo.caption"
+                class="w-full h-64 md:h-72 object-cover transition-transform duration-500 group-hover:scale-110">
             
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div class="absolute bottom-4 left-4 right-4">
@@ -25,50 +27,65 @@
               </div>
             </div>
             
-            <!-- Magnify icon -->
+            <!-- Icône de zoom -->
             <div class="absolute top-4 right-4 bg-white bg-opacity-80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <svg class="w-5 h-5 text-dark-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
               </svg>
             </div>
           </div>
         </div>
 
         <!-- Lightbox -->
+        <!-- Lightbox -->
         <div *ngIf="showLightbox" 
-             class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-             (click)="closeLightbox()">
+            class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            (click)="closeLightbox()">
+
           <div class="relative max-w-4xl max-h-full">
+            <!-- Bouton fermer -->
             <button (click)="closeLightbox()"
                     class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors">
               <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
-            
-            <img [src]="galleryPhotos[currentPhotoIndex]?.url" 
-                 [alt]="galleryPhotos[currentPhotoIndex]?.caption"
-                 class="max-w-full max-h-full object-contain rounded-lg"
-                 (click)="$event.stopPropagation()">
-            
+
+            <!-- Image dynamique -->
+            <img 
+              [src]="galleryPhotos[currentPhotoIndex]?.url"
+              [alt]="galleryPhotos[currentPhotoIndex]?.caption"
+              class="max-w-full max-h-full object-contain rounded-lg"
+              (click)="$event.stopPropagation()">
+
+            <!-- Légende -->
             <div class="text-center mt-4">
-              <p class="text-white text-lg">{{ galleryPhotos[currentPhotoIndex]?.caption }}</p>
+              <p class="text-white text-lg">
+                {{ galleryPhotos[currentPhotoIndex]?.caption }}
+              </p>
             </div>
-            
-            <!-- Navigation arrows -->
+
+            <!-- Flèche gauche -->
             <button *ngIf="currentPhotoIndex > 0"
                     (click)="previousPhoto(); $event.stopPropagation()"
-                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full transition-all">
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 
+                          bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full transition-all">
               <svg class="w-6 h-6 text-dark-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M15 19l-7-7 7-7"/>
               </svg>
             </button>
-            
+
+            <!-- Flèche droite -->
             <button *ngIf="currentPhotoIndex < galleryPhotos.length - 1"
                     (click)="nextPhoto(); $event.stopPropagation()"
-                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full transition-all">
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 
+                          bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full transition-all">
               <svg class="w-6 h-6 text-dark-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M9 5l7 7-7 7"/>
               </svg>
             </button>
           </div>

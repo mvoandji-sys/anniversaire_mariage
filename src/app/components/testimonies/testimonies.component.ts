@@ -16,14 +16,14 @@ export class TestimoniesComponent {
       id: 1,
       name: 'Marie & Pierre Dupont',
       message: 'Georges et Bibiane, vous êtes un exemple d\'amour véritable pour nous tous. Vos 5 années de mariage sont un témoignage de votre engagement mutuel et de votre foi. Que Dieu continue de bénir votre union !',
-      date: new Date('2024-10-15'),
+      date: new Date('2025-11-08'),
       approved: true
     },
     {
       id: 2,
       name: 'Famille NGUEMA',
       message: 'Quel bonheur de vous voir grandir ensemble ! Georges et Bibiane, votre amour rayonne et inspire tous ceux qui vous entourent. Félicitations pour ces 5 belles années !',
-      date: new Date('2024-10-20'),
+      date: new Date('2024-10-06'),
       approved: true
     }
   ];
