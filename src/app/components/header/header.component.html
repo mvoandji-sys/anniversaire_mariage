@@ -1,0 +1,75 @@
+    <header class="fixed top-0 left-0 right-0 z-50 glass-effect transition-all duration-300">
+      <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="text-2xl font-playfair text-dark-sage">G&B</div>
+          <span class="text-sage font-medium">5 Years</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a *ngFor="let item of navigationItems" 
+             [href]="'#' + item.id" 
+             (click)="scrollToSection($event, item.id)"
+             class="text-dark-sage hover:text-sage transition-colors duration-300 font-medium">
+            {{ translationService.getTranslation('navigation.' + item.key) }}
+          </a>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex items-center space-x-4">
+          <!-- Language Selector -->
+          <div class="relative">
+            <button (click)="showLanguages = !showLanguages"
+                    class="flex items-center space-x-1 text-dark-sage hover:text-sage transition-colors">
+              <span>{{ currentLanguage.flag }}</span>
+              <span class="hidden sm:inline">{{ currentLanguage.name }}</span>
+            </button>
+            
+            <div *ngIf="showLanguages" 
+                 class="absolute right-0 mt-2 bg-white rounded-lg shadow-lg border border-champagne p-2 min-w-[120px]">
+              <button *ngFor="let lang of availableLanguages"
+                      (click)="switchLanguage(lang)"
+                      class="w-full text-left px-3 py-2 hover:bg-light-champagne rounded flex items-center space-x-2">
+                <span>{{ lang.flag }}</span>
+                <span>{{ lang.name }}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Audio Control -->
+          <button (click)="toggleAudio()"
+                  class="p-2 rounded-full bg-sage text-white hover:bg-dark-sage transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path *ngIf="!isPlaying" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.616 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.616l3.767-3.816z"/>
+              <path *ngIf="isPlaying" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.816L4.616 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.616l3.767-3.816z"/>
+              <path *ngIf="isPlaying" d="M12.293 7.293a1 1 0 011.414 1.414L15.414 10l-1.707 1.293a1 1 0 11-1.414-1.414L13.586 10l-1.293-1.293z"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button (click)="mobileMenuOpen = !mobileMenuOpen"
+                  class="md:hidden p-2 text-dark-sage">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    [attr.d]="mobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation -->
+      <div *ngIf="mobileMenuOpen" 
+           class="md:hidden bg-white border-t border-champagne">
+        <div class="px-4 py-2 space-y-2">
+          <a *ngFor="let item of navigationItems" 
+             [href]="'#' + item.id"
+             (click)="scrollToSection($event, item.id); mobileMenuOpen = false"
+             class="block py-2 text-dark-sage hover:text-sage transition-colors">
+            {{ translationService.getTranslation('navigation.' + item.key) }}
+          </a>
+        </div>
+      </div>
+    </header>
+
+

@@ -1,0 +1,57 @@
+    <section id="story" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-playfair text-dark-sage mb-4">
+            {{ translationService.getTranslation('story.title') }}
+          </h2>
+          <p class="text-xl text-sage max-w-2xl mx-auto">
+            {{ translationService.getTranslation('story.subtitle') }}
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="relative max-w-4xl mx-auto">
+          <!-- Timeline line -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-sage rounded-full"></div>
+
+          <div class="space-y-16">
+            <div *ngFor="let event of timelineEvents; let i = index" 
+                 class="relative flex items-center"
+                 [class.flex-row-reverse]="i % 2 === 1">
+              
+              <!-- Timeline dot -->
+              <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-champagne rounded-full border-4 border-sage z-10"></div>
+
+              <!-- Content card -->
+              <div class="w-full md:w-5/12 p-6 bg-light-champagne rounded-2xl shadow-lg hover-lift"
+                   [class.md:ml-auto]="i % 2 === 0"
+                   [class.md:mr-auto]="i % 2 === 1">
+                
+                <div class="flex items-center mb-4">
+                  <div class="bg-sage text-white px-4 py-2 rounded-full text-lg font-bold">
+                    {{ event.year }}
+                  </div>
+                </div>
+
+                <h3 class="text-2xl font-playfair text-dark-sage mb-3">
+                  {{ event.title }}
+                </h3>
+                
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  {{ event.description }}
+                </p>
+
+                <div *ngIf="event.image" class="rounded-lg overflow-hidden">
+                  <img [src]="event.image" 
+                       [alt]="event.title" 
+                       class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+

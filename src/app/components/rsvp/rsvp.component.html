@@ -1,0 +1,155 @@
+    <section id="rsvp" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-playfair text-dark-sage mb-4">
+            {{ translationService.getTranslation('rsvp.title') }}
+          </h2>
+          <p class="text-xl text-sage max-w-2xl mx-auto">
+            {{ translationService.getTranslation('rsvp.subtitle') }}
+          </p>
+        </div>
+
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-gradient-to-br from-light-champagne to-ivory p-8 rounded-2xl shadow-lg">
+            <form (ngSubmit)="submitRSVP()" class="space-y-6">
+              <!-- Name -->
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-dark-sage mb-2">
+                  {{ translationService.getTranslation('rsvp.form.name') }} *
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  [(ngModel)]="rsvpData.name"
+                  name="fullName"
+                  required
+                  class="w-full px-4 py-3 border-2 border-champagne rounded-lg focus:border-sage focus:outline-none transition-colors bg-white"
+                  placeholder="Ex: Jean & Marie Dupont">
+              </div>
+
+              <!-- Phone -->
+              <div>
+                <label for="phone" class="block text-sm font-medium text-dark-sage mb-2">
+                  {{ translationService.getTranslation('rsvp.form.phone') }} *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  [(ngModel)]="rsvpData.phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 border-2 border-champagne rounded-lg focus:border-sage focus:outline-none transition-colors bg-white"
+                  placeholder="+33 6 12 34 56 78">
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-sm font-medium text-dark-sage mb-2">
+                  {{ translationService.getTranslation('rsvp.form.email') }}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="rsvpData.email"
+                  name="email"
+                  class="w-full px-4 py-3 border-2 border-champagne rounded-lg focus:border-sage focus:outline-none transition-colors bg-white"
+                  placeholder="votre.email@example.com">
+              </div>
+
+              <!-- Attendance Confirmation -->
+              <div class="bg-white p-4 rounded-lg border-2 border-champagne">
+                <label class="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="rsvpData.attending"
+                    name="attending"
+                    class="w-5 h-5 text-sage border-2 border-champagne rounded focus:ring-sage focus:ring-2">
+                  <span class="ml-3 text-lg font-medium text-dark-sage">
+                    {{ translationService.getTranslation('rsvp.form.attending') }}
+                  </span>
+                </label>
+              </div>
+
+              <!-- Number of Guests -->
+              <div *ngIf="rsvpData.attending">
+                <label for="guests" class="block text-sm font-medium text-dark-sage mb-2">
+                  {{ translationService.getTranslation('rsvp.form.guests') }}
+                </label>
+                <select
+                  id="guests"
+                  [(ngModel)]="rsvpData.guests"
+                  name="guests"
+                  class="w-full px-4 py-3 border-2 border-champagne rounded-lg focus:border-sage focus:outline-none transition-colors bg-white">
+                  <option value="0">Aucun accompagnant</option>
+                  <option value="1">1 accompagnant</option>
+                  <option value="2">2 accompagnants</option>
+                  <option value="3">3 accompagnants</option>
+                  <option value="4">4 accompagnants ou plus</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="rsvpMessage" class="block text-sm font-medium text-dark-sage mb-2">
+                  {{ translationService.getTranslation('rsvp.form.message') }}
+                </label>
+                <textarea
+                  id="rsvpMessage"
+                  [(ngModel)]="rsvpData.message"
+                  name="rsvpMessage"
+                  rows="4"
+                  class="w-full px-4 py-3 border-2 border-champagne rounded-lg focus:border-sage focus:outline-none transition-colors resize-none bg-white"
+                  placeholder="Un petit mot pour les mariés... (optionnel)"></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                [disabled]="!rsvpData.name || !rsvpData.phone"
+                class="w-full bg-gradient-sage text-white py-4 px-6 rounded-lg font-semibold text-lg hover:scale-105 transform transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
+                <span class="flex items-center justify-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  </svg>
+                  {{ translationService.getTranslation('rsvp.form.submit') }}
+                </span>
+              </button>
+            </form>
+
+            <!-- Success Message -->
+            <div *ngIf="showSuccessMessage" 
+                 class="mt-6 p-6 bg-green-100 border-2 border-green-300 rounded-lg">
+              <div class="flex items-center text-green-800">
+                <svg class="w-8 h-8 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-lg">Merci pour votre confirmation ! 🎉</h4>
+                  <p class="mt-1">
+                    <span *ngIf="rsvpData.attending">
+                      Nous sommes ravis de vous compter parmi nous le 1er novembre 2025 !
+                    </span>
+                    <span *ngIf="!rsvpData.attending">
+                      Nous comprenons et vous remercions de nous avoir prévenus.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Card -->
+          <div class="mt-8 bg-sage text-white p-6 rounded-2xl text-center">
+            <h3 class="text-xl font-playfair mb-3">Informations importantes</h3>
+            <div class="space-y-2 text-sm">
+              <p>📅 Date limite de confirmation : 15 octobre 2025</p>
+              <p>📞 Pour toute question : +33 6 12 34 56 78</p>
+              <p>📧 Email : georges.bibiane@email.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
